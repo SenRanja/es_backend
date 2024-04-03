@@ -1,0 +1,33 @@
+2024-01-23 15:58:32.606 | ERROR    | conf.errors:error_duplicate_group_add_msg:31 - (1062, "Duplicate entry '123' for key 'name'")
+2024-01-23 16:00:17.290 | ERROR    | conf.errors:error_duplicate_group_add_msg:32 - 1000 (1062, "Duplicate entry '123' for key 'name'")
+2024-01-23 16:00:39.875 | ERROR    | conf.errors:error_duplicate_group_add_msg:32 - err_code:1000 err_msg:(1062, "Duplicate entry '123' for key 'name'")
+2024-01-23 16:04:00.018 | ERROR    | conf.errors:error_duplicate_group_add_msg:32 - err_code:1000 err_msg:(1062, "Duplicate entry '123' for key 'name'")
+2024-01-23 16:07:46.883 | ERROR    | conf.errors:error_duplicate_group_add_msg:32 - err_code:1000 err_msg:申晏键(1062, "Duplicate entry '123' for key 'name'")
+2024-01-23 16:09:10.444 | ERROR    | conf.errors:error_duplicate_group_add_msg:32 - err_code:1000 err_msg:35申晏键(1062, "Duplicate entry '123' for key 'name'")
+2024-01-31 17:42:16.804 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:wuhuaping err_code:1001 err_msg:import_user_from_excel failed: (1062, "Duplicate entry '1707004117' for key 'stu_id'")
+2024-01-31 17:47:46.050 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:wuhuaping err_code:1001 err_msg:import_user_from_excel failed: Group matching query does not exist.
+2024-01-31 17:50:23.904 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:wuhuaping err_code:1001 err_msg:import_user_from_excel failed: 'Group' object has no attribute 'add'
+2024-01-31 18:34:15.607 | ERROR    | conf.errors:error_no_active_user_login_msg:55 - 用户被禁用
+2024-02-02 15:10:53.276 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-02-02 15:11:11.307 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-02-22 08:13:29.809 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: (1062, "Duplicate entry '17001' for key 'stu_id'")
+2024-02-27 11:58:05.574 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: (1062, "Duplicate entry '17001' for key 'stu_id'")
+2024-02-27 11:58:25.482 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: (1062, "Duplicate entry '17001' for key 'stu_id'")
+2024-02-27 11:58:48.133 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: (1048, "Column 'name' cannot be null")
+2024-03-06 10:56:53.411 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-06 10:57:30.997 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-06 11:03:09.037 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-06 11:23:14.890 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-06 11:23:44.020 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-06 11:38:50.064 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-06 11:56:49.525 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-06 11:57:41.387 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-06 11:57:47.376 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-06 11:58:12.123 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-07 09:34:17.459 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-07 09:34:56.430 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-07 09:39:40.965 | ERROR    | conf.errors:error_excel_import_user_msg:62 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: (1062, "Duplicate entry '17001' for key 'stu_id'")
+2024-03-09 15:22:00.757 | ERROR    | conf.errors:error_excel_import_user_msg:63 - user:420:申晏键 err_code:1002 err_msg:import_user_from_excel failed: (1062, "Duplicate entry '17001' for key 'stu_id'")
+2024-03-11 14:50:53.708 | ERROR    | conf.errors:error_excel_import_user_msg:63 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-11 14:50:56.260 | ERROR    | conf.errors:error_excel_import_user_msg:63 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
+2024-03-11 14:51:04.509 | ERROR    | conf.errors:error_excel_import_user_msg:63 - user:2:申晏键 err_code:1002 err_msg:import_user_from_excel failed: 'excel_file'
