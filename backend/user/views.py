@@ -20,6 +20,7 @@ from module.views import generate_user_info
 # 【用户 User】
 # 注册用户
 def register(request):
+    "废弃"
     data = json.loads(request.body)
 
     name = data["name"]
@@ -30,22 +31,35 @@ def register(request):
     email = data['email']
     role = data['role']
 
-    # 注册超级管理员
-    if data.get("super") == True:
-        user_status = "admin"
-        user = User.objects.create_superuser(password=pwd, name=name, stu_id=stu_id, tel=tel, id_card=id_card, email=email,role=role)
-    else:
-        # 注册教师
-        if data.get("role") == "tea":
-            user_status = "teacher"
-            user = User.objects.create_user(password=pwd,name=name,stu_id=stu_id,tel=tel,id_card=id_card,email=email,role=role)
-        # 注册学生用户
-        elif data.get("role") == "stu":
-            user_status = "student"
-            user = User.objects.create_user(password=pwd,name=name,stu_id=stu_id,tel=tel,id_card=id_card,email=email,role=role)
+    try:
+        # 注册超级管理员
+        if data.get("super") == True:
+            user_status = "admin"
+            user = User.objects.create_superuser(password=pwd, name=name, stu_id=stu_id, tel=tel, id_card=id_card, email=email,role=role)
         else:
-            return JR(error_log_msg("未填写用户是学生还是教师"))
-    return JR(success_msg("created new user: {name}".format(name=name)))
+            # 注册教师
+            if data.get("role") == "tea":
+                user_status = "teacher"
+                user = User.objects.create_user(password=pwd,name=name,stu_id=stu_id,tel=tel,id_card=id_card,email=email,role=role)
+            # 注册学生用户
+            elif data.get("role") == "stu":
+                user_status = "student"
+                user = User.objects.create_user(password=pwd,name=name,stu_id=stu_id,tel=tel,id_card=id_card,email=email,role=role)
+            else:
+                return JR(error_log_msg("未填写用户是学生还是教师"))
+        return JR(success_msg("created new user: {name}".format(name=name)))
+    except Exception as err:
+        err_str = str(err)
+        if "stu_id" in err_str and "Duplicate entry" in err_str:
+            return JR(error_log_msg("stu_id已注册"))
+        elif "tel" in err_str and "Duplicate entry" in err_str:
+            return JR(error_log_msg("tel已注册"))
+        elif "id_card" in err_str and "Duplicate entry" in err_str:
+            return JR(error_log_msg("id_card已注册"))
+        elif "email" in err_str and "Duplicate entry" in err_str:
+            return JR(error_log_msg("email已注册"))
+        else:
+            return JR(error_log_msg("注册失败，未知原因"))
 
 
 # 用户登录
@@ -265,7 +279,7 @@ def group_delete_user_by_data(request, group_id):
     grp = Group.objects.get(id=group_id)
     grp.user_set.clear()
     for user in users_list:
-        user_obg = User.objects.get(stu_id=user['stu_id'])
+        user_obg = User.objects.get(stu_id=user)
         grp.user_set.add(user_obg)
     return JR(success_msg("ok"))
 

@@ -51,8 +51,22 @@ class UserViewSet(viewsets.ModelViewSet):
             user = User.objects.create_superuser(password=pwd, name=name, stu_id=stu_id, tel=tel, id_card=id_card,
                                                  email=email, role=role)
         else:
+            try:
                 user = User.objects.create_user(password=pwd, name=name, stu_id=stu_id, tel=tel, id_card=id_card,
                                                 email=email, role=role)
+            except Exception as err:
+                err_str = str(err)
+                if "stu_id" in err_str and "Duplicate entry" in err_str:
+                    return JR(error_log_msg("stu_id已注册"))
+                elif "tel" in err_str and "Duplicate entry" in err_str:
+                    return JR(error_log_msg("tel已注册"))
+                elif "id_card" in err_str and "Duplicate entry" in err_str:
+                    return JR(error_log_msg("id_card已注册"))
+                elif "email" in err_str and "Duplicate entry" in err_str:
+                    return JR(error_log_msg("email已注册"))
+                else:
+                    return JR(error_log_msg("注册失败，未知原因"))
+
         return JR(success_msg("created new user: {name}".format(name=name)))
 
     def list(self, request, *args, **kwargs):
