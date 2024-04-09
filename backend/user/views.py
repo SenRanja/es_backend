@@ -275,7 +275,6 @@ def group_add_user_by_sid(request, group_id:int, sid:str):
 def group_delete_user_by_data(request, group_id):
     data = json.loads(request.body)
     users_list = data
-    print(users_list)
     grp = Group.objects.get(id=group_id)
     grp.user_set.clear()
     for user in users_list:
