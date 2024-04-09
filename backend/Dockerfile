@@ -15,7 +15,7 @@ COPY . /app/
 # 暂时为了方便安装vim net-tools
 RUN apt-get update -y && apt-get install -y build-essential libssl-dev libffi-dev python3-dev uwsgi-plugin-python3 cron vim net-tools
 
-# 安装 Python 依赖
+# 安装 Python 依赖，新建uwsgi日志目录（/app/uwsgi.ini的log所在目录）
 RUN pip install -r requirements.txt && pip install uwsgi && mkdir -p /var/log/uwsgi
 
 # 防破解 crontab (手动)
