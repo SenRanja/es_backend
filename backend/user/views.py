@@ -69,7 +69,7 @@ def login(request):
 
     user = auth.authenticate(username=data['login_name'], password=data['password'])
     if user == None:
-        res = JR(error_log_msg("login failed"))
+        res = JR(error_log_msg("login failed"), status=304)
         res.delete_cookie('session_id')
         return res
     if user.is_active==False:
