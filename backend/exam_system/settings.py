@@ -175,7 +175,7 @@ DATABASES = {
         'PORT': 3306,  # 端口
         'NAME': 'exam_system',  # 数据库名称
         'USER': 'root',  # 数据库用户名
-        'PASSWORD': '1qaz@WSX',  # 数据库密码
+        'PASSWORD': '1qaz@WSX!QAZzaq1',  # 数据库密码
     }
 }
 
