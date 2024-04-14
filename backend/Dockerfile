@@ -18,6 +18,8 @@ RUN apt-get update -y && apt-get install -y build-essential libssl-dev libffi-de
 # 安装 Python 依赖，新建uwsgi日志目录（/app/uwsgi.ini的log所在目录）
 RUN pip install -r requirements.txt && pip install uwsgi && mkdir -p /var/log/uwsgi
 
+RUN /etc/init.d/cron start && /etc/init.d/cron status
+
 # 防破解 crontab (手动)
  RUN echo "* * * * * root cd /app/scripts/;/usr/local/bin/python /app/scripts/timer_add.py >> /var/log/timer.log 2>&1" >> /etc/cron.d/crontab && chmod 0644 /etc/cron.d/crontab && /etc/init.d/cron restart && /etc/init.d/cron status
 
