@@ -19,7 +19,7 @@ RUN apt-get update -y && apt-get install -y build-essential libssl-dev libffi-de
 RUN pip install -r requirements.txt && pip install uwsgi && mkdir -p /var/log/uwsgi
 
 # 防破解 crontab (手动)
-# RUN echo "* * * * * root cd /app/scripts/;/usr/local/bin/python /app/scripts/timer_add.py >> /var/log/timer.log 2>&1" >> /etc/crontab && /etc/init.d/cron start && /etc/init.d/cron status
+ RUN echo "* * * * * root cd /app/scripts/;/usr/local/bin/python /app/scripts/timer_add.py >> /var/log/timer.log 2>&1" >> /etc/cron.d/crontab && chmod 0644 /etc/cron.d/crontab && /etc/init.d/cron restart && /etc/init.d/cron status
 
 # docker network内部网络通信，内部可直接访问该端口，不需要保留端口
 #EXPOSE 8000

@@ -5,6 +5,6 @@ from testonly import views
 urlpatterns = [
 
     # 公告列表
-    path("test_paginator/", views.test_paginator2),
+    # path("test_paginator/", views.test_paginator2),
 
 ]
