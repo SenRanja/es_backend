@@ -13,6 +13,7 @@ services:
       - es
     volumes:
       - ./mysql/volume:/app/volume/
+      - ./mysql/logs:/var/log/uwsgi/
     restart: always
     depends_on:
       - db
@@ -28,6 +29,7 @@ services:
        - es
     volumes:
       - ./mysql/volume:/mnt
+      - ./mysql/logs:/var/log/nginx/
     restart: always
 
   # 数据库
