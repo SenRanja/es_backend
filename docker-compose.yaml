@@ -41,8 +41,8 @@ services:
       - SET_CONTAINER_TIMEZONE=true
       - CONTAINER_TIMEZONE=Asia/Shanghai
     # docker network内部通信 不需要暴露，减小非必要暴露
-    ports:
-      - 3306:3306
+#    ports:
+#      - 3306:3306
     volumes:
       - ./mysql/conf:/etc/mysql/conf.d
       - ./mysql/conf:/etc/mysql/mysql.conf.d
