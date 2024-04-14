@@ -67,6 +67,9 @@ INSTALLED_APPS = [
     # 【系统监控】
     'system_monitor',  # 系统监控
 
+    # 【test】
+    'testonly',  # testing only without anything useful
+
     # -------------【以下为非手工创建 apps 】-------------
     # 'csp',   # 限制发送csp的header，以便vue可控制浏览器监听鼠标事件
 
@@ -175,7 +178,7 @@ DATABASES = {
         'PORT': 3306,  # 端口
         'NAME': 'exam_system',  # 数据库名称
         'USER': 'root',  # 数据库用户名
-        'PASSWORD': '1qaz@WSX!QAZzaq1',  # 数据库密码
+        'PASSWORD': '1qaz@WSX',  # 数据库密码
     }
 }
 

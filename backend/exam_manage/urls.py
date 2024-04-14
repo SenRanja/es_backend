@@ -23,4 +23,5 @@ urlpatterns = [
 
     # 获取已提交的旧卷
     path("get_old_results/<int:exam_id>/", views.get_old_results),
+
 ]

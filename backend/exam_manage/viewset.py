@@ -123,9 +123,33 @@ class ExamManageViewSet(viewsets.ModelViewSet):
         if 'T' in data['end_time'] and 'Z' in data['end_time']:
             data['end_time'] = UTC_2_CN_TIME(data['end_time'])
 
+
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
+
+
+        # # 考试 -- 班级
+        class_groups = data['class_groups']
+        partial = kwargs.pop('partial', False)
+        # instance 是 ExamManage 对象
+        instance = serializer.instance
+        # emc 获取对应考试的全部 ExamManageClass 对象
+        ExamManageClass.objects.filter(exam_manage_pk=instance).delete()
+        if type(class_groups) != list:
+            # 考虑 class_groups 是字符串类型，如 "企信,天津职业技术师范大学,17070144"
+            if ',' not in class_groups or '，' not in class_groups:
+                class_groups = class_groups + ","
+            if ',' in class_groups:
+                class_groups = class_groups.split(',')
+            if '，' in class_groups:
+                class_groups = class_groups.split('，')
+        for input_class in class_groups:
+            if Group.objects.filter(name=input_class).exists():
+                grp = Group.objects.get(name=input_class)
+                emc_obj = ExamManageClass.objects.create(group_class=grp, exam_manage_pk=instance)
+                emc_obj.save()
+
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 

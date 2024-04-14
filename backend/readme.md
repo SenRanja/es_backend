@@ -94,7 +94,7 @@ sorted_list = sorted(unordered_list, key=lambda x: custom_order.index(x))
 ### 部署
 
 ```shell
-makemigrations user video notice question_manage exam_manage exam_score license subject_manage module system_manage system_monitor ftp
+makemigrations user video notice question_manage exam_manage exam_score license subject_manage module system_manage system_monitor ftp testonly
 migrate
 ```
 

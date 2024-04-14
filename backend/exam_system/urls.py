@@ -89,4 +89,7 @@ urlpatterns = [
     # module 模块
     path('api/', include("module.urls")),
 
+    # test 模块
+    path('api/', include("testonly.urls")),
+
 ]
