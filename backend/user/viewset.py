@@ -1,6 +1,9 @@
 # encoding=utf-8
 import json
 from datetime import datetime
+
+from django_filters.rest_framework import DjangoFilterBackend
+
 from django.http import JsonResponse as JR
 
 from conf.errors import error_log_msg, success_msg
@@ -32,7 +35,8 @@ class UserViewSet(viewsets.ModelViewSet):
     # 如
     # http://127.0.0.1:8000/api/user/?search=%E7%94%B3
     # http://127.0.0.1:8000/api/user/?search=18536864913
-    filter_backends = [filters.SearchFilter, ]
+    filter_backends = [filters.SearchFilter,  DjangoFilterBackend, ]
+    filterset_fields = ['role', ]  # 精确匹配
     search_fields = ['id', 'stu_id', 'name', 'tel', 'id_card', 'email', 'role', ]
 
     def create(self, request, *args, **kwargs):

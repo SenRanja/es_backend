@@ -3,6 +3,7 @@ from django.contrib.auth.models import Group
 from question_manage.models import ExamQuestion
 from rest_framework import viewsets, filters
 from question_manage.serializer import ExamQuestionSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
 # DRF要求建立ViewSet
 
@@ -12,8 +13,10 @@ class ExamQuestionViewSet(viewsets.ModelViewSet):
     queryset = ExamQuestion.objects.all()
     serializer_class = ExamQuestionSerializer
 
-    filter_backends = [filters.SearchFilter, ]
-    search_fields = ['question_name', 'question_text', 'description', 'question_database', 'author',]
+    # 过滤
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend, ]
+    filterset_fields = ['question_type', 'difficulty_level', 'question_database',]  # 设置键值对精确过滤字段，url传参如 ?format=json&question_type=论述&id=126&page=1
+    search_fields = ['question_name', 'question_text', 'description', 'question_database', 'author',] # 字段模糊查询匹配
     # search_fields = ['=question_database', ]
     # 默认情况下，SearchFilter类搜索将使用不区分大小写的部分匹配(icontains)。你可以在search_fields中添加各种字符来指定匹配方法。
     # '^'开始 - 搜索。
