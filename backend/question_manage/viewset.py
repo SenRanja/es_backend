@@ -10,7 +10,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 class ExamQuestionViewSet(viewsets.ModelViewSet):
     """试题管理  由于涉及 model的图片以二进制方式存储，无法json传输，因此试题管理的DRF API部分弃用。
     试题管理的DRF API仅用作参考，无实际用途"""
-    queryset = ExamQuestion.objects.all()
+    queryset = ExamQuestion.objects.all().order_by('-last_modified_time')
     serializer_class = ExamQuestionSerializer
 
     # 过滤

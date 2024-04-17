@@ -50,6 +50,10 @@ class ExamQuestion(models.Model):
     question_database = models.CharField(max_length=150, verbose_name='题库名称', null=True, blank=True,)
     author = models.CharField(max_length=50, verbose_name='出题人', null=True, blank=True,)
 
+    # 为了修改试题，第一个显示修改的试题，新增此字段，用于将试题按照时间逆向排序
+    # auto_now=True 每次对象被保存时，字段的值都会被更新为当前日期和时间。即使对象未更改其他字段，也会更新该字段。通常用于记录对象的最后修改时间。
+    last_modified_time = models.DateTimeField(auto_now=True, verbose_name='试题最新更新时间')
+
     class Meta:
         verbose_name = '考试试题'
         db_table = "exam_question"
