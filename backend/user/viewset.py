@@ -45,9 +45,29 @@ class UserViewSet(viewsets.ModelViewSet):
         name = data["name"]
         pwd = data['password']
         stu_id = data['stu_id']
-        tel = data['tel']
-        id_card = data['id_card']
-        email = data['email']
+
+        if 'tel' not in data.keys():
+            tel = None
+        else:
+            if data['tel']=='':
+                tel = None
+            else:
+                tel = data['tel']
+        if 'id_card' not in data.keys():
+            id_card = None
+        else:
+            if data['id_card']=='':
+                id_card = None
+            else:
+                id_card = data['id_card']
+        if 'email' not in data.keys():
+            email = None
+        else:
+            if data['email']=='':
+                email = None
+            else:
+                email = data['email']
+
         role = data['role']
 
         # 注册超级管理员

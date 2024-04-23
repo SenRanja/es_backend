@@ -184,13 +184,18 @@ def import_user_from_excel(request):
         # 从第二行开始读取
         for row in handle_sheet.iter_rows(min_row=2, values_only=True):
             try:
+                row_role = row[6].strip()
+                if row_role=="老师":
+                    row_role = 'tea'
+                elif row_role=="学生":
+                    row_role = 'stu'
                 new_user_obj = User.objects.create(
                     name=row[0],
                     stu_id=row[1],
                     tel=row[3],
                     id_card=row[4],
                     email=row[5],
-                    role=row[6],
+                    role=row_role,
                 )
                 # 设置密码不能在create方法直接指定password，否则密码是未加密的明文存储，必须如下单独set_password才可
                 new_user_obj.set_password(row[7])
