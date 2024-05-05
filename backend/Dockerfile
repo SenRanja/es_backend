@@ -16,7 +16,7 @@ COPY . /app/
 RUN apt-get update -y && apt-get install -y build-essential libssl-dev libffi-dev python3-dev uwsgi-plugin-python3 cron vim net-tools libgl1-mesa-glx
 
 # 安装 Python 依赖，新建uwsgi日志目录（/app/uwsgi.ini的log所在目录）
-RUN pip install -r requirements.txt && pip install uwsgi && mkdir -p /var/log/uwsgi
+RUN pip install --upgrade pip && pip install -r requirements.txt && pip install uwsgi && mkdir -p /var/log/uwsgi
 
 #RUN /etc/init.d/cron start && /etc/init.d/cron status
 
