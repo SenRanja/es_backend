@@ -4,13 +4,16 @@ import mimetypes
 import os
 import time
 from wsgiref.util import FileWrapper
+import random
 
 from django.conf import settings
 from django.http import FileResponse
 from django.http import StreamingHttpResponse
 from django.http import JsonResponse as JR
+import cv2
 
 from conf.errors import success_msg, error_video_upload_is_not_staff_msg
+from lib.generate_frame_2_poster import generate_poster
 from subject_manage.models import Subject, SubjectClass
 from video.models import Video
 from exam_system.settings import TEACHING_VIDEO_ROOT
@@ -70,6 +73,10 @@ def video_upload(request):
         with open(file_path, 'wb') as f:
             for chunk in file.chunks():
                 f.write(chunk)
+
+        # 生成poster
+        poster_name = os.path.join(TEACHING_VIDEO_ROOT, filename + '.jpg')
+        generate_poster(file_path, poster_name)
 
         new_video = Video.objects.create(
             subject=Subject.objects.get(id=subject_id),
